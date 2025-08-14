@@ -6,7 +6,7 @@
  *
  * Return: Always 0.
  */
-int main(void)
+int get_pid(void)
 {
     pid_t my_pid;
 

@@ -8,7 +8,7 @@
  *
  */
 
-int main()
+int Read_line()
 {
 	char *line = NULL;
 	size_t len = 0;

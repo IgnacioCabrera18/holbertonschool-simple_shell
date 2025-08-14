@@ -10,7 +10,15 @@
 
 int main()
 {
-	char , delimitar[] = ' ', *token;
+	char str[] = "Ejercicio de tokens", delimitar[] = " ", *token;
 
-	return (token);
+	token = strtok(str, delimitar);
+
+	while (token != NULL)
+	{
+		printf("%s\n", token);
+		token = strtok(NULL, delimitar);
+	}
+
+	return (0);
 }

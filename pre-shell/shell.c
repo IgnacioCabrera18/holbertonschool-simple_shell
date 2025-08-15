@@ -3,6 +3,8 @@
 #include <string.h>
 #include <unistd.h>
 #include <sys/wait.h>
+#include <sys/stat.h>
+#include "main.h"
 
 extern char **environ;
 
@@ -16,14 +18,15 @@ extern char **environ;
 int main()
 {
 	char *line = NULL, *token, *argv[2];
-	size_t len = 0 ;
+	size_t len = 0;
 	ssize_t read;
+	struct stat st;
 	pid_t pid;
 	int status;
 
 	while (1)
 	{
-		printf("#minishell$ ");
+		printf("#shellbalvin$ ");
 
 		read = getline(&line, &len, stdin);
 		if (read == -1)
@@ -37,10 +40,11 @@ int main()
 		if (line[0] == '\0')
 			continue;
 
-		token = strtok(line, " ");
+		token = strtok(line, " \t");
 		if (token == NULL)
 			continue;
-
+		if (stat(token, &st) == -1)
+			token = _which(token);
 		pid = fork();
 		if (pid == -1)
 		{

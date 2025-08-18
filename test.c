@@ -12,7 +12,7 @@ int main(void)
 	char *line = NULL, *argv[1000], *token;
 	size_t len = 0;
 	ssize_t read;
-	int argc;
+	int argc, linea = 1;
 
 	while (1)
 	{
@@ -26,14 +26,18 @@ int main(void)
 		}
 		argc = tok_line(line, argv);
 		if (argc == 0)
+		{
+			linea++;
 			continue;
+		}
 		if (argv[0][0] == '/' || (argv[0][0] == '.' && argv[0][1] == '/'))
 			token = argv[0];
 		else
 			token = _which(argv[0]);
 		if (token == NULL)
 		{
-			perror("command not found");
+			fprintf(stderr, "sh: %d: %s: not found\n", linea, argv[0]);
+			linea++;
 			continue;
 		}
 		execute(argv, token);

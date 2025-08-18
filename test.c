@@ -27,7 +27,10 @@ int main(void)
 		argc = tok_line(line, argv);
 		if (argc == 0)
 			continue;
-		token = _which(argv[0]);
+		if (argv[0][0] == '/' || (argv[0][0] == '.' && argv[0][1] == '/'))
+			token = argv[0];
+		else
+			token = _which(argv[0]);
 		if (token == NULL)
 		{
 			perror("command not found");

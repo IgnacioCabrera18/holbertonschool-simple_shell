@@ -14,7 +14,7 @@ void build_path(char *dir, char *token, char *dir_tok)
 	while (dir[i] != '\0')
 	{
 		dir_tok[i] = dir[i];
-		i++
+		i++;
 	}
 	dir_tok[i] = '/';
 	i++;
@@ -46,10 +46,10 @@ char *_which(char *token)
 	ruta_cp = strdup(ruta);
 	if (ruta_cp == NULL)
 		return (NULL);
-	dir = strtok(ruta_cp, ":")
+	dir = strtok(ruta_cp, ":");
 	while (dir != NULL)
 	{
-		len = strlen(dir) strlen(token) + 2;
+		len = strlen(dir) + strlen(token) + 2;
 		dir_tok = malloc(len);
 		if (dir_tok == NULL)
 		{

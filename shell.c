@@ -20,8 +20,9 @@ int main(void)
 		read = getline(&line, &len, stdin);
 		if (read == -1)
 		{
+			free(line);
 			printf("\n");
-			break;
+			exit(0);
 		}
 		i = 0;
 		token = strtok(line, " \t\n");

@@ -9,7 +9,7 @@
 
 int main(void)
 {
-	char *line = NULL, *argv[1000];
+	char *line = NULL, *argv[1000], *token;
 	size_t len = 0;
 	ssize_t read;
 	int argc;
@@ -27,7 +27,13 @@ int main(void)
 		argc = tok_line(line, argv);
 		if (argc == 0)
 			continue;
-		execute(argv);
+		token = _which(argv[0]);
+		if (token == NULL)
+		{
+			perror("command not found");
+			continue;
+		}
+		execute(*token);
 	}
 	free(line);
 	return (0);

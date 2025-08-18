@@ -41,6 +41,7 @@ int main(void)
 			continue;
 		}
 		execute(argv, token);
+		linea++;
 	}
 	free(line);
 	return (0);

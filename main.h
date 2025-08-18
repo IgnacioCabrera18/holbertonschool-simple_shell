@@ -8,8 +8,8 @@
 #include <sys/stat.h>
 #include <stdlib.h>
 
-
-
+void build_path(char *dir, char *token, char *dir_tok)
+char *_which(char *token)
 extern char **environ;
 
 #endif

@@ -11,7 +11,7 @@
 void build_path(char *dir, char *token, char *dir_tok);
 char *_which(char *token);
 int tok_line(char *line, char **argv);
-void execute(char **argv);
+void execute(char **argv, char *token);
 
 extern char **environ;
 

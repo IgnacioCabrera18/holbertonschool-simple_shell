@@ -60,7 +60,7 @@ char *_which(char *token)
 		if (stat(dir_tok, &st) == 0)
 		{
 			free(ruta_cp);
-			return(dir_tok);
+			return (dir_tok);
 		}
 		free(dir_tok);
 		dir = strtok(NULL, ":");

@@ -33,7 +33,7 @@ int main(void)
 			perror("command not found");
 			continue;
 		}
-		execute(*token);
+		execute(argv, token);
 	}
 	free(line);
 	return (0);

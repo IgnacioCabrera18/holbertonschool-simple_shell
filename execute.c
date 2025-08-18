@@ -6,7 +6,7 @@
  * @argv: pointer to argv pointer
  */
 
-void execute(char **argv)
+void execute(char **argv, char *token)
 {
 	pid_t pid;
 	int status;
@@ -14,7 +14,7 @@ void execute(char **argv)
 	pid = fork();
 	if (pid == 0)
 	{
-		execve(argv[0], argv, environ);
+		execve(token, argv, environ);
 		perror("./shell");
 		exit(1);
 	}

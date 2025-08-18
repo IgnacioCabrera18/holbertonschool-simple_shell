@@ -35,6 +35,11 @@ int main(void)
 			free(line);
 			exit(0);
 		}
+		if (strcmp(argv[0], "env") == 0)
+		{
+			print_env();
+			continue;
+		}
 		if (argv[0][0] == '/' || (argv[0][0] == '.' && argv[0][1] == '/'))
 			token = argv[0];
 		else

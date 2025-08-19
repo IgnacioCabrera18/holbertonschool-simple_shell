@@ -17,11 +17,11 @@ int main(void)
 	while (1)
 	{
 		printf("#shellbalvin$ ");
-
 		read = getline(&line, &len, stdin);
 		if (read == -1)
 		{
 			printf("\n");
+			free(line);
 			exit(0);
 		}
 		argc = tok_line(line, argv);

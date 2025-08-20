@@ -1,4 +1,4 @@
-.TH HSH 1 12-12-2022 HSH\ 1 Simple\ Shell\ Manual
+.TH HSH 1 20-08-2025 HSH\ 1 Simple\ Shell\ Manual
 
 .SH NAME
 Run ./hsh - Simple Shell. Command line interpreter
@@ -11,3 +11,10 @@ Simple Shell is a command line interpreter developed in C language that emulates
 
 .SH COMPILATION
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
+
+.SH MODES
+The shell can be used in interactive or non-interactive mode. The interactive mode is how the shell is normally used, the executable file is run and we can write commands. In the non-interactive mode you pass the command to the executable file with a pipe operator. In the "EXAMPLES" section you can see how to use them.
+
+.SH AUTHORS
+Ignacio Cabrera <ignaciocabrera1832006@gmail.com>
+Sofia Nuñez <sofianunez000@gmail.com>

@@ -61,7 +61,7 @@ int main(void)
 			token = _which(argv[0]);
 		if (token == NULL)
 		{
-			fprintf(stderr, "./hsh: %d: %s: not found\n", linea, argv[0]);
+			printf("./hsh: %d: %s: not found\n", linea, argv[0]);
 			linea++;
 			continue;
 		}

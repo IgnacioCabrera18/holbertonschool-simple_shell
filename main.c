@@ -1,10 +1,34 @@
 #include "main.h"
 
 /**
+ * auxiliar - auxiliar comands
  *
+ * @argv: arguments
  *
+ * @line: pointer to line
  *
+ * Return: 0
+ */
+
+int auxiliar(char **argv, char *line)
+{
+	if (strcmp(argv[0], "exit") == 0)
+	{
+		free(line);
+		exit(0);
+	}
+	if (strcmp(argv[0], "env") == 0)
+	{
+		print_env();
+		return (1);
+	}
+	return (0);
+}
+
+/**
+ * main - simple shell
  *
+ * Return: 0
  */
 
 int main(void)
@@ -30,23 +54,14 @@ int main(void)
 			linea++;
 			continue;
 		}
-		if (strcmp(argv[0], "exit") == 0)
-		{
-			free(line);
-			exit(0);
-		}
-		if (strcmp(argv[0], "env") == 0)
-		{
-			print_env();
-			continue;
-		}
+		auxiliar(argv, line);
 		if (argv[0][0] == '/' || (argv[0][0] == '.' && argv[0][1] == '/'))
 			token = argv[0];
 		else
 			token = _which(argv[0]);
 		if (token == NULL)
 		{
-			fprintf(stderr, "sh: %d: %s: not found\n", linea, argv[0]);
+			fprintf(stderr, "./hsh: %d: %s: not found\n", linea, argv[0]);
 			linea++;
 			continue;
 		}

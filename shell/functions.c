@@ -17,7 +17,7 @@ void execute(char **argv, char *token)
 	if (pid == 0)
 	{
 		execve(token, argv, environ);
-		perror("./shell");
+		perror("execve");
 		exit(1);
 	}
 	else if (pid > 0)
@@ -45,10 +45,11 @@ int tok_line(char *line, char **argv)
 	int i = 0;
 
 	token = strtok(line, " \t\n");
-	while (token && i < 999)
+	while (token && i <= 999)
 	{
-		argv[i++] = token;
+		argv[i] = token;
 		token = strtok(NULL, " \t\n");
+		i++;
 	}
 	argv[i] = NULL;
 	return (i);

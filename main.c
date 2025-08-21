@@ -12,6 +12,7 @@ int main(void)
 	size_t len = 0;
 	ssize_t read;
 	int argc, linea = 1;
+	struct stat st;
 
 	while (1)
 	{
@@ -31,13 +32,18 @@ int main(void)
 			linea++;
 			continue;
 		}
-		exit_and_env(argv, line);
+		if (exit_and_env(argv, line))
 		{
 			linea++;
 			continue;
 		}
-		if (argv[0][0] == '/' || (argv[0][0] == '.' && argv[0][1] == '/'))
-			token = argv[0];
+		if (strchr(argv[0], '/') != NULL)
+		{
+			if (stat(argv[0], &st) == 0)
+				token = argv[0];
+			else
+				token = NULL;
+		}
 		else
 			token = _which(argv[0]);
 		if (token == NULL)

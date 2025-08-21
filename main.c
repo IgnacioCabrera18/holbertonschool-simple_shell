@@ -45,7 +45,8 @@ int main(void)
 		read = getline(&line, &len, stdin);
 		if (read == -1)
 		{
-			printf("\n");
+			if (isatty(STDIN_FILENO))
+				printf("\n");
 			free(line);
 			exit(0);
 		}

@@ -13,6 +13,7 @@ char *_which(char *token);
 int tok_line(char *line, char **argv);
 void execute(char **argv, char *token);
 void print_env(void);
+char *get_path_from_env(void);
 
 extern char **environ;
 

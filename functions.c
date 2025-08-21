@@ -99,7 +99,7 @@ char *_which(char *token)
 	struct stat st;
 	size_t len;
 
-	ruta = getenv("PATH");
+	ruta = get_path_from_env();
 	if (ruta == NULL)
 		return (NULL);
 

@@ -40,7 +40,8 @@ int main(void)
 
 	while (1)
 	{
-		printf("#shellbalvin$ ");
+		if (isatty(STDIN_FILENO))
+			printf("#shellbalvin$ ");
 		read = getline(&line, &len, stdin);
 		if (read == -1)
 		{

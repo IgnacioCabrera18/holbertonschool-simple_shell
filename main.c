@@ -1,31 +1,6 @@
 #include "main.h"
 
 /**
- * auxiliar - auxiliar comands
- *
- * @argv: arguments
- *
- * @line: pointer to line
- *
- * Return: 0
- */
-
-int auxiliar(char **argv, char *line)
-{
-	if (strcmp(argv[0], "exit") == 0)
-	{
-		free(line);
-		exit(0);
-	}
-	if (strcmp(argv[0], "env") == 0)
-	{
-		print_env();
-		return (1);
-	}
-	return (0);
-}
-
-/**
  * main - simple shell
  *
  * Return: 0
@@ -57,6 +32,10 @@ int main(void)
 			continue;
 		}
 		exit_and_env(argv, line);
+		{
+			linea++;
+			continue;
+		}
 		if (argv[0][0] == '/' || (argv[0][0] == '.' && argv[0][1] == '/'))
 			token = argv[0];
 		else

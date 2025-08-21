@@ -9,16 +9,37 @@
 char *get_path_from_env(void)
 {
 	int i = 0;
-	char *env;
 
 	while (environ[i] != NULL)
 	{
-		env = environ[i];
-
-		if (env[0] == 'P' && env[1] == 'A' && env[2] == 'T' &&
-		env[3] == 'H' && env[4] == '=')
-			return (env + 5);
+		if (strncmp(environ[i], "PATH=", 5) == 0)
+			return (environ[i] + 5);
 		i++;
 	}
 	return (NULL);
+}
+
+/**
+ * exit_and_env - auxiliar comands
+ *
+ * @argv: arguments
+ *
+ * @line: pointer to line
+ *
+ * Return: 0
+ */
+
+int exit_and_env(char **argv, char *line)
+{
+	if (strcmp(argv[0], "exit") == 0)
+	{
+		free(line);
+		exit(0);
+	}
+	if (strcmp(argv[0], "env") == 0)
+	{
+		print_env();
+		return (1);
+	}
+	return (0);
 }

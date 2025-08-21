@@ -56,7 +56,7 @@ int main(void)
 			linea++;
 			continue;
 		}
-		auxiliar(argv, line);
+		exit_and_env(argv, line);
 		if (argv[0][0] == '/' || (argv[0][0] == '.' && argv[0][1] == '/'))
 			token = argv[0];
 		else

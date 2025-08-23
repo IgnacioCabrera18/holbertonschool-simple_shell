@@ -8,10 +8,10 @@
 
 int main(void)
 {
-	char *line = NULL, *argv[1000], *token;
+	char *line = NULL, *argv[1000], *token = NULL;
 	size_t len = 0;
 	ssize_t read;
-	int argc, linea = 1;
+	int argc, linea = 1, status = 0;
 	struct stat st;
 
 	while (1)
@@ -24,7 +24,7 @@ int main(void)
 			if (isatty(STDIN_FILENO))
 				printf("\n");
 			free(line);
-			exit(0);
+			exit(status);
 		}
 		argc = tok_line(line, argv);
 		if (argc == 0)
@@ -42,13 +42,19 @@ int main(void)
 			if (stat(argv[0], &st) == 0)
 				token = argv[0];
 			else
-				token = NULL;
+			{
+				 fprintf(stderr, "./hsh: %d: %s: not found\n", linea, argv[0]);
+               	 		 status = 127;
+                		 linea++;
+                		 continue;
+			}
 		}
 		else
 			token = _which(argv[0]);
 		if (token == NULL)
 		{
 			fprintf(stderr, "./hsh: %d: %s: not found\n", linea, argv[0]);
+			status = 127;
 			linea++;
 			continue;
 		}

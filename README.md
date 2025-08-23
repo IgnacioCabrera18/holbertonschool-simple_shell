@@ -10,7 +10,7 @@ This mini shell written in C language simulates the basic behavior of a Unix ter
 - Searches for the command within those directories
 - Creates a child process and executes the command
 
-# BUILD INS
+# BUILT-INS
 
  "exit": Terminates the shell.
  "env": Prints all environment variables using 'environ'.

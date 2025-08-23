@@ -32,7 +32,7 @@ int main(void)
 			linea++;
 			continue;
 		}
-		if (exit_and_env(argv, line))
+		if (exit_and_env(argv, line, token))
 		{
 			linea++;
 			continue;
@@ -53,6 +53,9 @@ int main(void)
 			continue;
 		}
 		execute(argv, token);
+		if (strchr(argv[0], '/') == NULL && token != NULL)
+			free(token);
+
 		linea++;
 	}
 	free(line);

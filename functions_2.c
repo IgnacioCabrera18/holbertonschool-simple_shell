@@ -29,10 +29,12 @@ char *get_path_from_env(void)
  * Return: 0
  */
 
-int exit_and_env(char **argv, char *line)
+int exit_and_env(char **argv, char *line, char *token)
 {
 	if (strcmp(argv[0], "exit") == 0)
 	{
+		if (token != NULL)
+			free(token);
 		free(line);
 		exit(0);
 	}
